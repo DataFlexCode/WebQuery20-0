@@ -1,0 +1,11 @@
+[Properties]
+Version=20.0
+[WorkspacePaths]
+ConfigFile=.\Programs\Config.ws
+[Conditionals]
+Is$WebApp=True
+Is$Win64=False
+[Projects]
+Project0=WebApp.src
+[Libraries]
+Lib1=.\StureApsPublicLib\StureApsPublicLib200.sws
