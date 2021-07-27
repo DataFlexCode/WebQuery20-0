@@ -1,9 +1,0 @@
-GroupID
-Name
-C_S
-Economy
-Economy_S
-RunVDFQuery
-RunVDFQuery_S
-FtpFolder
-FtpFolder_S

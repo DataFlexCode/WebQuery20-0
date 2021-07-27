@@ -1,4 +1,4 @@
-Use cExpressionParser.pkg
+﻿Use cExpressionParser.pkg
 
 Class cWqExprParser is a cExpressionParser
 
@@ -8,14 +8,14 @@ Class cWqExprParser is a cExpressionParser
         Number nVal1 nVal2
         Move aParameters[0] to strParameter1
         Move aParameters[1] to strParameter2
-        If ((strParameter1.iValueType=XP_Integer or strParameter1.iValueType=XP_Numeric) and (strParameter2.iValueType=XP_Integer or strParameter2.iValueType=XP_Numeric)) Begin
-            Move XP_Boolean to strRval.iValueType
+        If ((strParameter1.iXPValueType=XP_Integer or strParameter1.iXPValueType=XP_Numeric) and (strParameter2.iXPValueType=XP_Integer or strParameter2.iXPValueType=XP_Numeric)) Begin
+            Move XP_Boolean to strRval.iXPValueType
             Move strParameter1.sValue to nVal1
             Move strParameter2.sValue to nVal2
             Move (nVal1<>0 and nVal2<>0) to strRval.sValue
         End
         Else Begin
-            Move XP_Error to strRval.iValueType
+            Move XP_Error to strRval.iXPValueType
             Error DFERR_OPERATOR "ExprParser: Illegal parameter passed to 'and'"
         End
         Function_Return strRval
@@ -26,14 +26,14 @@ Class cWqExprParser is a cExpressionParser
         Number nVal1 nVal2
         Move aParameters[0] to strParameter1
         Move aParameters[1] to strParameter2
-        If ((strParameter1.iValueType=XP_Integer or strParameter1.iValueType=XP_Numeric) and (strParameter2.iValueType=XP_Integer or strParameter2.iValueType=XP_Numeric)) Begin
-            Move XP_Boolean to strRval.iValueType
+        If ((strParameter1.iXPValueType=XP_Integer or strParameter1.iXPValueType=XP_Numeric) and (strParameter2.iXPValueType=XP_Integer or strParameter2.iXPValueType=XP_Numeric)) Begin
+            Move XP_Boolean to strRval.iXPValueType
             Move strParameter1.sValue to nVal1
             Move strParameter2.sValue to nVal2
             Move (nVal1<>0 or nVal2<>0) to strRval.sValue
         End
         Else Begin
-            Move XP_Error to strRval.iValueType
+            Move XP_Error to strRval.iXPValueType
             Error DFERR_OPERATOR "ExprParser: Illegal parameter passed to 'or'"
         End
         Function_Return strRval
@@ -44,7 +44,7 @@ Class cWqExprParser is a cExpressionParser
         tXPValue strRval
         
         Move (Integer(aParameters[0].sValue)) to strRval.sValue
-        Move XP_Integer                       to strRval.iValueType
+        Move XP_Integer                       to strRval.iXPValueType
         Function_Return strRval
     End_Function
 
@@ -52,7 +52,7 @@ Class cWqExprParser is a cExpressionParser
         tXPValue strRval
         
         Move (String(aParameters[0].sValue)) to strRval.sValue
-        Move XP_String                       to strRval.iValueType
+        Move XP_String                       to strRval.iXPValueType
         Function_Return strRval
     End_Function
 
@@ -60,7 +60,7 @@ Class cWqExprParser is a cExpressionParser
         tXPValue strRval
         
         Move (Number(aParameters[0].sValue)) to strRval.sValue
-        Move XP_Numeric                      to strRval.iValueType
+        Move XP_Numeric                      to strRval.iXPValueType
         Function_Return strRval
     End_Function
 
@@ -68,7 +68,7 @@ Class cWqExprParser is a cExpressionParser
         tXPValue strRval
         
         Move (Date(aParameters[0].sValue)) to strRval.sValue
-        Move XP_Date                       to strRval.iValueType
+        Move XP_Date                       to strRval.iXPValueType
         Function_Return strRval
     End_Function
     
@@ -76,7 +76,7 @@ Class cWqExprParser is a cExpressionParser
         tXPValue strRval
         
         Move (String(aParameters[0].sValue) + String(aParameters[1].sValue)) to strRval.sValue
-        Move XP_String to strRval.iValueType
+        Move XP_String to strRval.iXPValueType
         Function_Return strRval
     End_Function
     
@@ -84,7 +84,7 @@ Class cWqExprParser is a cExpressionParser
         tXPValue tRet
         
         Move (String(aParameters[0].sValue) + String(aParameters[1].sValue)) to tRet.sValue
-        Move XP_String to tRet.iValueType
+        Move XP_String to tRet.iXPValueType
         
         Function_Return tRet
     End_Function
@@ -93,7 +93,7 @@ Class cWqExprParser is a cExpressionParser
         tXPValue tRetVal
         
         Get DateToText of oDateFunctions aParameters[0].sValue "#D #MN #Y4" to tRetVal.sValue
-        Move XP_String to tRetVal.iValueType
+        Move XP_String to tRetVal.iXPValueType
         Function_Return tRetVal
     End_Function
     
@@ -101,7 +101,7 @@ Class cWqExprParser is a cExpressionParser
         tXPValue tRetVal
         
         Get DateToText of oDateFunctions aParameters[0].sValue "#MN #D #Y4" to tRetVal.sValue
-        Move XP_String to tRetVal.iValueType
+        Move XP_String to tRetVal.iXPValueType
         Function_Return tRetVal
     End_Function
     
@@ -109,7 +109,7 @@ Class cWqExprParser is a cExpressionParser
         tXPValue tRetVal
         
         Get DateToText of oDateFunctions aParameters[0].sValue aParameters[1].sValue to tRetVal.sValue
-        Move XP_String to tRetVal.iValueType
+        Move XP_String to tRetVal.iXPValueType
         Function_Return tRetVal
     End_Function
     
@@ -119,7 +119,7 @@ Class cWqExprParser is a cExpressionParser
         
         Move aParameters[0].sValue        to dDate
         Move (Date(DateSetDay(dDate, 1))) to tRetVal.sValue
-        Move XP_Date                      to tRetVal.iValueType
+        Move XP_Date                      to tRetVal.iXPValueType
         Function_Return tRetVal
     End_Function
     
