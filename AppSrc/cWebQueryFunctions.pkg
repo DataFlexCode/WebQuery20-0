@@ -988,7 +988,7 @@ Class cWebQueryFunctions is a cObject
             If (aTQSels[i].bUseTQ) Begin
 
                 If (aTQSels[i].bInList) Begin
-                    Send AddFilterOrList of oTQ (&tTQ) aTQSels[i].Selection.iTable ;
+                    Send AddFilterInList of oTQ (&tTQ) aTQSels[i].Selection.iTable ;
                                                        aTQSels[i].Selection.iColumn ;
                                                        aTQSels[i].aList
                 End
