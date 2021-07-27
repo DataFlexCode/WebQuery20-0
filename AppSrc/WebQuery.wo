@@ -112,6 +112,8 @@ Object oWebQuery is a cWebView
     Property Boolean        pbAllowRawOutput    False
     Property Boolean        pbUseSqlDefault     False
     
+    Send RegisterDownloadFolder of ghoWebResourceManager (psHome(phoWorkspace(oApplication)) + "WebQuery")
+    
     //==========================================================================
     //  Initialisation
     //==========================================================================
