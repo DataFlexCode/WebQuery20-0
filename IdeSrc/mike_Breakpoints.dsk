@@ -1,0 +1,5 @@
+[\\vmware-host\Shared Folders\VmShare\Projects\WebQuery18-0\AppSrc\WebApp.src]
+Source380=WebSet psTheme of oWebApp to "Df_Web_Creme"
+ConditionEnabled380=0
+Condition380= 
+380=2

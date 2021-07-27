@@ -1,0 +1,19 @@
+// Class: cWebMenuItem
+//
+// It just causes a "Wait" dialog to appear when the item is clicked to avoid
+// having to create a trivial OnLoad procedure on every menu item that is going
+// to run a report.
+//
+// Can be used for things other than WebQuery reports.
+
+Use cWebMenuItem.pkg
+
+Class cWebQueryMenuItem is a cWebMenuItem
+    
+    Procedure OnLoad
+        Forward Send OnLoad
+        
+        Send SetActionMode (RefProc(OnClick)) scModeProgress "Processing report - please wait...."
+    End_Procedure
+
+End_Class

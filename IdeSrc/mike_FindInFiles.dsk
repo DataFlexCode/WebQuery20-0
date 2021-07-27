@@ -1,0 +1,13 @@
+[Header]
+Mask=*.src;*.vw;*.sl;*.dg;*.rv;*.bp;*.pkg;*.wo;*.dd;*.inc;*.tpl;*.dfo;*.asp;*.asa;*.htm;*.html;*.css;*.js
+Active=1
+SubDirectories=1
+WholeWordOnly=0
+SearchWhere=1
+Location=Z:\VmShare\Projects\WebQuery18-0\IdeSrc\mike_FindInFiles.dsk
+[Z:\VmShare\Projects\WebQuery18-0\AppSrc]
+IsEnabled=0
+[Z:\VmShare\Projects\WebQuery18-0\DdSrc]
+IsEnabled=0
+[Z:\VmShare\Projects\WebQuery18-0\AppHtml\DfEngine]
+IsEnabled=1
