@@ -10,6 +10,23 @@ Use XmlBuilder.pkg
 
 Use wqSelectionOperators.wo
 Use cWqExprParser.pkg
+Use cCharTranslate.pkg
+
+// Returns a GUID in the GUID struct
+// https://docs.microsoft.com/en-us/windows/win32/api/rpcdce/nf-rpcdce-uuidcreate
+External_Function oleCoCreateGUID 'CoCreateGuid' ole32.dll pointer lpGUID returns integer
+
+// Returns the number of characters in the string including the zero terminator, or 0 if failed
+// https://docs.microsoft.com/en-us/windows/win32/api/combaseapi/nf-combaseapi-stringfromguid2
+External_Function oleStringFromGUID2 'StringFromGUID2' ole32.dll pointer aRefGUID pointer lpszGUID integer iCchMax returns integer
+
+// https://docs.microsoft.com/en-us/previous-versions/aa379358%28v=vs.80%29
+Struct tNewGUID
+  Uinteger data1
+  UShort   data2
+  UShort   data3
+  UChar[8] data4
+End_Struct
 
 Struct wqDir
     Boolean bDir
@@ -745,13 +762,41 @@ Class cWebQueryFunctions is a cObject
 //==============================================================================    
 // Report output methods
 //==============================================================================    
-    
+  //
+  //  Code for generating a unique new GUID 
+  //
+  Function CreateNewGUID Returns String
+    Handle  hoCharTranslate
+    string  sGuid sNewGUID
+    integer iRet
+    tNewGUID GUID
+  
+    Move "" To sNewGUID
+    Move (oleCoCreateGUID(AddressOf(GUID))) to iRet
+    If (iRet=0) Begin
+      Get Create (RefClass(cCharTranslate)) to hoCharTranslate
+      If (hoCharTranslate) Begin
+        Move (Repeat(character(0), 256)) to sGuid
+        Move (oleStringFromGUID2(AddressOf(GUID),AddressOf(sGUID), 128)) to iRet
+        If (iRet>0) Begin
+          Get Utf16ToStr of hoCharTranslate (AddressOf(sGuid)) CP_OEMCP 128 to sNewGUID
+        End
+      End
+    End
+    Move (lowercase(sNewGUID)) To sNewGUID  // gravity uses lowercase, so why don't we follow that
+    Move (Replace("{",sNewGUID,"")) To sNewGUID // gravity does not like the {} brackets around the
+    Move (Replace("}",sNewGUID,"")) To sNewGUID // GUID
+    Function_Return sNewGUID
+  End_Function
+
+
+
     Function OpenOutput Integer iDest Integer iFormat String ByRef sPath String ByRef sFile Returns Integer
         Integer iChn
         String  sDir
         
         Get Seq_New_Channel                                         to iChn
-        Get RandomHexUUID                                           to sFile
+        Get CreateNewGUID                                           to sFile
         If      (iFormat = C_wqOutputHtml) Move (sFile + ".html")   to sFile
         Else If (iFormat = C_wqOutputText) Move (sFile + ".txt")    to sFile
         Else If (iFormat = C_wqOutputCSV)  Move (sFile + ".csv")    to sFile
