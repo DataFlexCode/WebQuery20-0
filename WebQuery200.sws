@@ -8,4 +8,4 @@ Is$Win64=False
 [Projects]
 Project0=WebApp.src
 [Libraries]
-Lib1=.\StureApsPublicLib\StureApsPublicLib200.sws
+Lib1=Stables20\Stables20.sws
