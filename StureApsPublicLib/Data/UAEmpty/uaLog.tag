@@ -1,9 +1,0 @@
-EventDate
-EventTime
-UserId
-SessionId
-EventSource
-EventText
-ErrorNumber
-ErrorLine
-C_S
