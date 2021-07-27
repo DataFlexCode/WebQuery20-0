@@ -1,17 +1,9 @@
-<OBJECT RUNAT=Server SCOPE=Session ID=WebAppServerSession PROGID="WebAppServer.Session.18.0">
-</OBJECT>
-
-<OBJECT RUNAT=Server SCOPE=Session ID=oSessionManager PROGID="WebAppServer.WebBusinessProcess.18.0">
-</OBJECT>
-
-<OBJECT RUNAT=Server SCOPE=Session ID=oWebResourceManager PROGID="WebAppServer.WebBusinessProcess.18.0">
+<OBJECT RUNAT=Server SCOPE=Session ID=WebAppServerSession PROGID="WebAppServer.Session.20.0">
 </OBJECT>
 
 <SCRIPT LANGUAGE=VBScript RUNAT=Server>
 SUB Session_OnStart
-    WebAppServerSession.Initialize("WebQuery18-0")
-    oSessionManager.Name="oSessionManager"
-    oWebResourceManager.Name="oWebResourceManager"
+    WebAppServerSession.Initialize("WebQuery20-0")
     Session.Timeout=1
 
 END SUB
