@@ -1,5 +1,27 @@
 Use AllWebAppClasses.pkg
 Use cWebMenuItemLoadView.pkg
+
+// TEMP FIX FOR DF 20 //
+Function tempOverstrike Global String sSource String sDestination Integer iPos Returns String
+    Integer iChar iLen j
+    UChar[] Destination
+    String  sResult  
+    Move 0 to j
+    Move (StringToUCharArray(sDestination)) to Destination
+    Move (Length(sSource)) to iLen
+    For iChar from 1 to (Length(sDestination))
+        If (iChar=(iPos+j)) Begin
+            Move (Ascii(Mid(sSource,1,j+1))) to Destination[iChar-1]
+            If (j<(iLen-1)) Begin
+                Increment j
+            End
+        End
+    Loop
+    Move (UCharArrayToString(Destination)) to sResult
+    Function_Return sResult
+End_Function
+// TEMP FIX FOR DF 20 ENDS //
+
 Use cWqWebApp.pkg
 Use cWebQueryMenuItem.pkg
 
@@ -13,6 +35,7 @@ Object oWebApp is a cWqWebApp
     Set psTheme to "Df_Web_Creme"
     Set peLoginMode to lmLoginSupported
     Set psDateFormat to "dd/mm/yyyy"
+    Set psEncryptPassword to "iuy45kjjh^&%3kghkjjhed78)(*&^Y&^"  // REPLACE WITH YOUR OWN!!!   
     
     Object oCommandbar is a cWebCommandBar
         
