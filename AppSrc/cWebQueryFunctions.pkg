@@ -1,7 +1,7 @@
 Use UI
 Use seq_chnl.pkg
 
-// Strure's packages:
+// Sture's packages:
 Use StringFunctions.pkg
 Use StructFunctions.pkg
 Use cExpressionParser.pkg
@@ -238,14 +238,14 @@ Class cWebQueryFunctions is a cObject
         Move (Length(sName)) to iLen
         
         For i from 1 to iLen
-            If not (C_wqValidXmlChars contains Uppercase(Mid(sName, 1, i))) Move (Overstrike("_", sName, i)) to sName 
+            If not (C_wqValidXmlChars contains Uppercase(Mid(sName, 1, i))) Move (tempOverstrike("_", sName, i)) to sName 
         Loop
         
         Function_Return sName
     End_Function
     
     Function UpperChar String sData Integer iChar Returns String
-        Function_Return (Overstrike(Uppercase(Mid(sData, 1, iChar)), sData, iChar))
+        Function_Return (tempOverstrike(Uppercase(Mid(sData, 1, iChar)), sData, iChar))
     End_Function
     
     Function NiceFieldName Handle hTab Integer iCol Returns String
