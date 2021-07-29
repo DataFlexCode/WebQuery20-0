@@ -1,5 +1,4 @@
 Use cWebResourceManager.pkg
 
 Object oWebResourceManager is a cWebResourceManager
-  Set psEncryptPassword to "iuy45kjjh^&%3kghkjjhed78)(*&^Y&^"
 End_Object
