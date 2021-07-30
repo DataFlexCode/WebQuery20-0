@@ -845,7 +845,7 @@ Object _oVdfRuntimeFunctions is a cObject
         
         Forward Send End_Construct_Object
         
-//        Send RereadWebApplications // (and enumerate runtime)
+        Send RereadWebApplications // (and enumerate runtime)
         Get VdfFolderPath of oFileFunctions VDF_PROGRAM_INITIAL to sFolder
         Get Module_Name to sModule
         Get AppendPath of oFileFunctions sFolder sModule to sProgramPath
