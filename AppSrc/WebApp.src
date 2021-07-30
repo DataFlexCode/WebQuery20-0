@@ -24,11 +24,15 @@ End_Function
 
 Use cWqWebApp.pkg
 Use cWebQueryMenuItem.pkg
+Use cConnection.pkg
 
 Register_Function PublicPath   Returns String
 Register_Function piUserRights Returns Integer
 
 Object oApplication is a cApplication
+    Object oConnection is a cConnection
+        Use LoginEncryption.pkg
+    End_Object  
 End_Object
 
 Object oWebApp is a cWqWebApp
