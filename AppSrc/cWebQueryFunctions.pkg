@@ -1177,8 +1177,22 @@ Class cWebQueryFunctions is a cObject
         WriteLn
         WriteLn 'function removeFile() {'
         WriteLn '   var arr = [], req;'
-        Writeln '   arr.push("{\"ActionRequest\":{\"Header\":{");'
-        WriteLn '   arr.push("\"sFocus\": \"\",");'
+//        Writeln '   arr.push("{\"ActionRequest\":{\"Header\":{");'
+//        WriteLn '   arr.push("\"sFocus\": \"\",");'
+//
+// Fix for error that occurs due to change in the way the Data Access web framework
+// client-side communicates with the DataFlex WebApp on the server-side.
+//
+// Basically:
+//           "ActionRequest": {"Header":...
+// becomes:
+//           "v": "[CurrentVersionID]", "r": {"Header":...
+//
+// MJP - 26/10/2013
+//
+        Writeln '   arr.push("\"v\": \"' (psVersionID(Self)) '\",);'
+        Writeln '   arr.push("{\"r\":{\"Header\":{");'
+        Writeln '   arr.push("\"sFocus\": \"\",");'
         WriteLn '   arr.push("\"aDDODefs\":[],");'
         WriteLn '   arr.push("\"aSyncProps\":[]");'
         WriteLn '   arr.push("},");'
